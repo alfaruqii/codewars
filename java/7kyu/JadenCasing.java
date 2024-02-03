@@ -10,15 +10,20 @@
 
 // Link to Jaden's former Twitter account @officialjaden via archive.org
 
-import org.apache.commons.lang3.StringUtils.capitalize;		
+import java.util.Arrays;
+import java.lang.String;
+import java.lang.Character;
+import java.util.stream.Collectors;
 public class JadenCase {
 
 	public String toJadenCase(String phrase) {
 		// TODO put your code below this comment
-    return capitalize(phrase);
-    if(phrase.length() == 0 || phrase == null){
+    if(phrase == null || phrase.length() == 0){
       return null;
     }
+    return Arrays.stream(phrase.split("\\s+"))
+      .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
+      .collect(Collectors.joining(" "));
 	}
 
 }
